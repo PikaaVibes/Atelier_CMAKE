@@ -29,41 +29,66 @@ jobs:
           cmake ..
           make
           ./src/calculator add 10 5
+
  Test_Sub:
     runs-on: ubuntu-latest
     needs: Compilation
     steps:
-      - name: Test fonction sub
+      - name: Test fonction add
         run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
+          mkdir build
           cd build
-          ./src/calculator sub 10 5
+          cmake ..
+          make
+          ./src/calculator add 3 -2
 
   Test_Mul:
     runs-on: ubuntu-latest
     needs: Compilation
     steps:
-      - name: Test fonction mul
+      - name: Test fonction add
         run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
+          mkdir build
           cd build
-          ./src/calculator mul 10 5
-
+          cmake ..
+          make
+          ./src/calculator add 5 5
+  
   Test_Div:
-    runs-on: ubuntu-latest
+   runs-on: ubuntu-latest
     needs: Compilation
     steps:
-      - name: Test fonction div
+      - name: Test fonction add
         run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
+          mkdir build
           cd build
-          ./src/calculator div 10 5
+          cmake ..
+          make
+          ./src/calculator add 1 5
 
   Test_Car:
-    runs-on: ubuntu-latest
+     runs-on: ubuntu-latest
     needs: Compilation
     steps:
-      - name: Test fonction car
+      - name: Test fonction add
         run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
+          mkdir build
           cd build
-          ./src/calculator car 5
+          cmake ..
+          make
+          ./src/calculator add 5
 
   Deploy:
     runs-on: ubuntu-latest
